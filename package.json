@@ -1,12 +1,12 @@
 {
   "name": "convert-postman-jmeter",
-  "version": "1.0.5",
+  "version": "1.0.6-beta",
   "description": "Convert files Postman Project to JMeter Project",
   "main": "./lib/convert-postman-jmeter",
   "scripts": {
     "start": "node ./bin/convert-postman-jmeter",
-    "test": "mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=./reports/mocha/test-results.xml",
-    "lint": "eslint ./lib --format junit --output-file ./reports/eslint/eslint.xml"
+    "test": "mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=./reports/mocha/test-results.xml && nyc --reporter=lcov --reporter=text-lcov mocha test/*.js",
+    "lint": "eslint ./lib --format junit --output-file ./reports/eslint/eslint.xml && eslint ./lib --format json -o ./reports/eslint/eslint.json"
   },
   "files": [
     "lib",
@@ -45,6 +45,7 @@
     "eslint-config-google": "^0.13.0",
     "mocha": "^6.1.4",
     "mocha-junit-reporter": "^1.22.0",
+    "mocha-sonar-generic-test-coverage": "0.0.6",
     "nyc": "^14.1.1"
   },
   "dependencies": {
